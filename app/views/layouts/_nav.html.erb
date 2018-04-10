@@ -1,4 +1,4 @@
-<div id="header" class="bg-blue-dark">
+<div id="header" class="bg-blue-dark mb-4">
 
     <div data-toggle="sticky">
 
@@ -8,7 +8,7 @@
             <div class="header-inner container">
                 <!--branding/logo -->
                 <div class="header-brand">
-                    <a class="header-brand-text text-light" href="<%= root_path %>" title="Home"> 
+                    <a class="header-brand-text text-light" href="<%= root_path %>" title="Home">
                         <h2 class="h4 my-0 font-weight-normal">
                             <span class="font-weight-bold">League</span>Tracker
                         </h2>
@@ -30,31 +30,46 @@
                         <ul class="nav navbar-nav container">
 
                             <li class="nav-item">
-                                <a href="<%= leagues_path %>" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link"> 
+                                <a href="<%= leagues_path %>" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link">
                                     <span class="nav-link-inner" data-title="News">Find a League</span>
                                 </a>
                             </li>
-
-                            <% if user_signed_in? %>
+                            <% if current_user.league_manager?  %>
                                 <li class="nav-item">
-                                    <a href="<%= destroy_user_session_path %>" data-method="delete" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link">
-                                        <span class="nav-link-inner" data-title="Log Out">Log Out |
-                                            <%= current_user.first_name %>
+                                    <a href="<%= new_league_path %>" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link">
+                                        <span class="nav-link-inner">
+                                            Create League
                                         </span>
                                     </a>
                                 </li>
-                                <% elsif  %>
-                                    <li class="nav-item">
-                                        <a href="<%= new_user_registration_path %>" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link">
-                                            <span class="nav-link-inner" data-title="Sign Up">Sign Up</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                            <a href="<%= new_user_session_path %>" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link">
-                                                <span class="nav-link-inner" data-title="Log In">Log In</span>
+                                <% end %>
+
+                                    <% if user_signed_in? %>
+                                        <li class="nav-item">
+                                            <a href="<%= destroy_user_session_path %>" data-method="delete" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link">
+                                                <span class="nav-link-inner" data-title="Log Out">Log Out
+                                                </span>
                                             </a>
                                         </li>
-                                    <% end %>
+                                        <li class="nav-item">
+                                            <a href="<%= edit_user_registration_path %>" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link">
+                                                <span class="nav-link-inner">
+                                                    <%= current_user.email %>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <% elsif  %>
+                                            <li class="nav-item">
+                                                <a href="<%= new_user_registration_path %>" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link">
+                                                    <span class="nav-link-inner" data-title="Sign Up">Sign Up</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="<%= new_user_session_path %>" data-toggle="scroll-link" data-dimiss="jpanel-menu" class="nav-link">
+                                                    <span class="nav-link-inner" data-title="Log In">Log In</span>
+                                                </a>
+                                            </li>
+                                            <% end %>
                         </ul>
                     </div>
                     <!--/.navbar-collapse -->

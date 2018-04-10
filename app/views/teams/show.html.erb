@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>Coach:</strong>
+  <%= @team.coach_id %>
+</p>
+
+<p>
+  <strong>Player count:</strong>
+  <%= @team.player_count %>
+</p>
+
+<p>
+  <strong>Wins:</strong>
+  <%= @team.wins %>
+</p>
+
+<p>
+  <strong>Losses:</strong>
+  <%= @team.losses %>
+</p>
+
+<%= link_to 'Edit', edit_league_team_path(@team) %> |
+<%= link_to 'Back', league_teams_path %>

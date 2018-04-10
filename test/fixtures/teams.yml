@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  coach_id: MyString
+  player_count: 1
+  wins: 1
+  losses: 1
+
+two:
+  name: MyString
+  coach_id: MyString
+  player_count: 1
+  wins: 1
+  losses: 1

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Teams</h1>
+
+      <table class="table table-inverse table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Team Name</th>
+            <th>Coach</th>
+            <th>Total Players</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @count = 1 %>
+            <% @league.teams.each do |team| %>
+              <tr>
+                <th scope="row">
+                  <%= @count %>
+                </th>
+                <td>
+                  <%= team.name %>
+                </td>
+                <td>
+                  <%= team.coach_id %>
+                </td>
+                <td>
+                  <%= team.player_count %>
+                </td>
+              </tr>
+              <% @count += 1 %>
+                <% end %>
+        </tbody>
+      </table>
