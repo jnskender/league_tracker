@@ -9,16 +9,14 @@
      email: "jnskender@gmail.com",
      first_name: "John",
      last_name: "Skender",
-     password: "admin"
-     role: "league_manager"
+     password: "admin",
    )
 
    User.create!(
      email: "emilykearbey@gmail.com",
      first_name: "Emily",
      last_name: "Kearbey",
-     password: "admin"
-     role: "athlete"
+     password: "admin",
    )
 
    league1 = League.create!(
