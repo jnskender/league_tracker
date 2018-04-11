@@ -11,7 +11,7 @@
             <%= link_to new_league_team_path(@league), :class=>"mb-1 btn btn-sm btn-primary" do %>
               <i class="fa fa-trophy mr-2"></i>Join League
               <% end %>
-                    <% if current_user.league_manager? %>
+                    <% if user_signed_in? && current_user.league_manager? %>
                       <a href=<%=edit_league_path(@league) %> class="mb-1 btn btn-warning btn-sm">
                         <i class="fa fa-wrench mr-2"></i> Edit League </a>
                       <%  end %>
@@ -33,7 +33,7 @@
               <p><span class="font-weight-bold">League Starts: </span><%= @league.start_date.strftime("%m/%d/%Y") %></p>
               <p><span class="font-weight-bold">League Ends: </span><%= @league.end_date.strftime("%m/%d/%Y") %></p>
               <p><span class="font-weight-bold">Only: </span><%= spots_left(@league) %> spots left!</p>
-          
+
             </p>
           </div>
       </div>
