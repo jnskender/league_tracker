@@ -24,7 +24,7 @@
               <div class="mt-auto">
                 <a href= <%= league_path(league) %> class="btn btn-primary btn-sm">
                   <i class="fa fa-trophy mr-2"></i> View League </a>
-                   <% if current_user.league_manager? %>
+                   <% if  user_signed_in? && current_user.league_manager? %>
                   <a href= <%= edit_league_path(league) %> class="btn btn-warning btn-sm">
                   <i class="fa fa-wrench mr-2"></i> Edit League </a>
                   <%  end %>
