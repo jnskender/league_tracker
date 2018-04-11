@@ -9,14 +9,21 @@
      email: "jnskender@gmail.com",
      first_name: "John",
      last_name: "Skender",
-     password: "admin",
+     password: "password",
    )
 
    User.create!(
      email: "emilykearbey@gmail.com",
      first_name: "Emily",
      last_name: "Kearbey",
-     password: "admin",
+     password: "password",
+   )
+
+   User.create!(
+     email: "admin@admin.com",
+     first_name: "Admin",
+     last_name: "Smith",
+     password: "password",
    )
 
    league1 = League.create!(
