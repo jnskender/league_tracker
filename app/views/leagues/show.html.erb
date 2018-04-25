@@ -3,85 +3,100 @@
   <div class="row ">
     <div class="col-md-6 mx-auto d-flex flex-row h-100">
       <div class="card bg-shadow mb-3 text-center ">
-        <%= image_tag  "soccer.jpg", class:"card-img-top img-fluid" %>
-          <div class="card-body">
-            <h4 class="card-title">
-              <%= @league.name %>
-            </h4>
-            <%= link_to new_league_team_path(@league), :class=>"mb-1 btn btn-sm btn-primary" do %>
-              <i class="fa fa-trophy mr-2"></i>Join League
-              <% end %>
-                    <% if user_signed_in? && current_user.league_manager? %>
-                      <a href=<%=edit_league_path(@league) %> class="mb-1 btn btn-warning btn-sm">
-                        <i class="fa fa-wrench mr-2"></i> Edit League </a>
-                      <%  end %>
-          </div>
-      </div>
-      </div>
-      <div class="col-md-6 mx-auto ">
-      <div class="card bg-shadow mb-3 ">
-          <div class="card-body">
-            <h4 class="card-title text-center">
-              Details
-            </h4>
-            <hr></hr>
-            <p class="card-text">
-              <p class="font-weight-bold"></p>
-              <p class="text-s"><%= @league.description %>.</p>
-              <p><span class="font-weight-bold">Zip Code: </span> <%= @league.zip %></p>
-              <p><span class="font-weight-bold">League length: </span><%= date_distance(@league) %></p>
-              <p><span class="font-weight-bold">League Starts: </span><%= @league.start_date.strftime("%m/%d/%Y") %></p>
-              <p><span class="font-weight-bold">League Ends: </span><%= @league.end_date.strftime("%m/%d/%Y") %></p>
-              <p><span class="font-weight-bold">Only: </span><%= spots_left(@league) %> spots left!</p>
-
-            </p>
-          </div>
+        <%= image_tag "soccer.jpg", class:"card-img-top img-fluid" %>
+        <div class="card-body">
+          <h4 class="card-title">
+            <%= @league.name %>
+          </h4>
+          <%= link_to new_league_team_path(@league), :class=>"mb-1 btn btn-sm btn-primary" do %>
+          <i class="fa fa-trophy mr-2"></i>Join League
+        <% end %>
+        <% if user_signed_in? && current_user.league_manager? %>
+          <a href=<%=edit_league_path(@league) %> class="mb-1 btn btn-warning btn-sm">
+            <i class="fa fa-wrench mr-2"></i>
+            Edit League
+          </a>
+        <%  end %>
       </div>
     </div>
   </div>
-  <div class="row mt-4">
-    <div class="col-md-12 mx-auto">
-      <div class="card bg-shadow text-center">
-        <div class="card-header">Current Teams</div>
-        <div class="card-body">
-          <h4 class="card-title">
-            Standings
-          </h4>
-          <table class="table table-inverse table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Team Name</th>
-                <th>Coach</th>
-                <th>W-L</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @count = 1 %>
-                <% @league.teams.sorted_by_wins.each do |team| %>
-                  <tr>
-                    <th scope="row">
-                      <%= @count %>
-                    </th>
-                    <td>
-                      <%= team.name %>
-                    </td>
-                    <td>
-                      <%= team.coach_id %>
-                    </td>
-                    <td>
-                      <%= team.wins %> - <%= team.losses %>
-                    </td>
-                  </tr>
-                  <% @count += 1 %>
-                    <% end %>
-            </tbody>
-          </table>
-        </div>
+  <div class="col-md-6 mx-auto ">
+    <div class="card bg-shadow mb-3 ">
+      <div class="card-body">
+        <h4 class="card-title text-center">
+          Details
+        </h4>
+        <hr></hr>
+        <p class="card-text">
+          <p class="font-weight-bold"></p>
+          <p class="text-s"><%= @league.description %>.</p>
+          <p>
+            <span class="font-weight-bold">Zip Code:
+            </span>
+            <%= @league.zip %></p>
+          <p>
+            <span class="font-weight-bold">League length:
+            </span><%= date_distance(@league) %></p>
+          <p>
+            <span class="font-weight-bold">League Starts:
+            </span><%= @league.start_date.strftime("%m/%d/%Y") %></p>
+          <p>
+            <span class="font-weight-bold">League Ends:
+            </span><%= @league.end_date.strftime("%m/%d/%Y") %></p>
+          <p>
+            <span class="font-weight-bold">Only:
+            </span><%= spots_left(@league) %>
+            spots left!</p>
+
+        </p>
       </div>
     </div>
   </div>
 </div>
+<div class="row mt-4">
+  <div class="col-md-12 mx-auto">
+    <div class="card bg-shadow text-center">
+      <div class="card-header">Current Teams</div>
+      <div class="card-body">
+        <h4 class="card-title">
+          Standings
+        </h4>
+        <table class="table table-inverse table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Team Name</th>
+              <th>Coach</th>
+              <th>W-L</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @count = 1 %>
+              <% @league.teams.sorted_by_wins.each do |team| %>
+                <tr>
+                  <th scope="row">
+                    <%= @count %>
+                  </th>
+                  <td>
+                    <%= team.name %>
+                  </td>
+                  <td>
+                    <%= team.coach_id %>
+                  </td>
+                  <td>
+                    <%= team.wins %>
+                    -
+                    <%= team.losses %>
+                  </td>
+                </tr>
+                <% @count += 1 %><% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= link_to 'Edit', edit_league_path(@league) %>
